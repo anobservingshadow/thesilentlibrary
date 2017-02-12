@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+	<head>
+		<!--
+		
+		-->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Silent Library - Main Music</title>
+		<script src="modernizr.custom.40753.js"></script>
+		<link rel="icon" href="favicon.png" />
+		<link rel="stylesheet" href="styles.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<header>
+			<img src="Final%20banner.jpg"  id="banner" alt="A Really Nice Looking Banner">
+		</header>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li class="dropdown">
+					<a class="dropbtn, active" href="#">Music</a>
+					<div class="dropdown-content">
+						<a href="classical.html">Classical</a>
+						<a href="english.html">English</a>
+						<a href="anime.html">Anime</a>
+					</div>
+				</li>
+				<li id="navabout"><a href="about.html">About</a></li>
+			</ul>
+		</nav>
+		<aside>
+			<ul id="sidebar">
+				<li><a href="classical.html">Classical</a></li>
+				<li><a href="english.html">English</a></li>
+				<li><a href="anime.html">Anime</a></li>
+			</ul>
+		</aside>
+		<a href="#"><img alt="Up arrow" class="arrow" src="arrow.jpg"></a>
+	<section>
+		<button id="pushmenu" onClick="openNav();">&#9776; Menu</button>
+			<h2>Music</h2>
+			<p>Greetings, I am the assistant librarian here. My name is Madeleine.</p>
+			<p>We have three main genres of music, which are on the left. Do keep in mind that the reviews are personal, which means there may be a fair amount of bias. You have been warned.</p>
+			<p>Please do remember to keep your music quiet to avoid disturbing any of the other listeners around you.We hope you enjoy your stay here. Happy Listening!</p>
+			<p>If you have any suggestions, please input them below:</p>
+		</section>
+		<form method="get" action="results.html" id="suggestion" target="_blank">
+		<form method="post" action="mailto:anobservingshadow@gmail.com" enctype="text/plain" id="sendform">
+			<p>If you have any suggestions, please fill out this form:</p>
+			Given Name: <input type="text" name="First Name" placeholder="e.g. Ravi"> <br />
+			Surname: <input type="text" name="Last Name" placeholder="e.g. Rahten"> <br />
+			Email: <input type="email" name="Email Address" size="50" placeholder="e.g. weareno_1@music.com"> <br />
+			<div id="readroot">
+				<input type="button" value="Remove song"
+					onclick="this.parentNode.parentNode.removeChild(this.parentNode);"/> <br />
+				<select name="Genre of Song">
+					<option value="classical">Classical</option>
+					<option value="english">English</option>
+					<option value="anime">Anime</option>
+				</select>
+				<input type="text" name="Title of Song" size="50" placeholder="Song Title"> <br /> <br />
+				A short description of the song: <br />
+				<textarea rows="5" cols="50" name="Description" placeholder="Write description here..."></textarea> <br />
+		 	</div>
+		  	<span id="writeroot"></span>
+		  	<input type="button" id="createSongs" onclick="moreSongs();" value="More Suggestions"> <br />
+			Comments: Your thoughts on the site, any bugs, problems, etc.<br />
+			<textarea rows="5" cols="50" name="Comments" placeholder="Write comments here..."></textarea> <br />
+			<input type="submit" onclick="showInput();" id="submit">
+		</form>
+		</form>
+		</body>
+		<footer>
+			<p>This website was created by DTCorporations&#8482; &#169; 2016</p>
+		</footer>	
+	<script>
+		var counter = 0;
+
+		function moreSongs() {
+			counter = counter + 1;
+			var newSongs = document.getElementById("readroot").cloneNode(true);
+			newSongs.id = "";
+			newSongs.style.display = "block";
+			var newSong = newSongs.childNodes;
+			for (var i=0;i<newSong.length;i++) {
+				var songName = newSong[i].name;
+				if (typeof songName !== "undefined") {
+					newSong[i].name = songName + counter;
+				}
+			}
+			var insertHere = document.getElementById('writeroot');
+			insertHere.parentNode.insertBefore(newSongs,insertHere);
+		}
+		window.onload = moreSongs();
+		
+		function pleasework() {
+			var please = document.getElementById("createSongs");
+			
+			please.onclick = moreSongs();
+		}
+		window.onload = pleasework();
+		function preview() {
+			var form=document.getElementById("suggestion");
+			form.action="results.html";
+			form.submit();
+			var mailForm=document.getElementById("sendform")
+			sendform.action="mailto:anobservingshadow@gmail.com";
+		}
+		var mq = window.matchMedia( "(min-width: 1230px)" );
+			$.fn.scrollBottom = function() { 
+				return $(document).height() - this.scrollTop() - this.height(); 
+			};
+			window.onscroll = function() {myFunction()};
+			function myFunction() {
+				if (document.body.scrollTop > 100 && mq.matches && $(window).scrollBottom() > 100) {
+					$(".arrow").fadeIn()
+				} else {
+					$(".arrow").fadeOut()
+				}
+			}
+	</script>
+</html>

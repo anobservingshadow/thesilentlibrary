@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+	<head>
+		<!--
+		
+		-->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Silent Library - Main Music</title>
+		<link rel="icon" href="favicon.png" />
+		<link rel="stylesheet" href="styles.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<header>
+			<img src="Final%20banner.jpg"  id="banner" alt="A Really Nice Looking Banner">
+		</header>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li class="dropdown">
+					<a class="dropbtn" href="music.html">Music</a>
+					<div class="dropdown-content">
+						<a href="classical.html">Classical</a>
+						<a href="english.html">English</a>
+						<a href="anime.html">Anime</a>
+					</div>
+				</li>
+				<li id="navabout"><a href="about.html">About</a></li>
+			</ul>
+		</nav>
+		<aside>
+			<ul id="sidebar">
+				<li><a href="classical.html">Classical</a></li>
+				<li><a href="english.html">English</a></li>
+				<li><a href="anime.html">Anime</a></li>
+			</ul>
+		</aside>
+		<a href="#"><img alt="Up arrow" class="arrow" src="arrow.jpg"></a>
+		<section>
+		<button id="pushmenu" onClick="openNav();">&#9776; Menu</button>
+			<p>
+				You entered the following data:
+			</p>
+			<script>
+				var formData = location.search;
+				formData = formData.substring(1, formData.length);
+				while (formData.indexOf("+") !== -1) {
+					formData = formData.replace("+", " ");
+				}
+				formData = decodeURIComponent(formData);
+				var formArray = formData.split("&");
+				for (var i = 0; i < formArray.length; i = i + 1) {
+					document.write("<p>" + formArray[i] + "</p>");
+				}
+			</script>
+		</section>
+	</body>
+	<footer id="credits">
+			<p>This website was created by DTCorporations&#8482; &#169; 2016</p>
+	</footer>
+	<script>
+			var acc = document.getElementsByClassName("musictitle");
+			var n;
+
+			for (n=0;n<acc.length;n++) {
+				acc[n].onclick = function(){
+					this.classList.toggle("active");
+					var description = this.nextElementSibling;
+					if (description.style.maxHeight) {
+						description.style.maxHeight = null;
+					} else {
+						description.style.maxHeight = description.scrollHeight + "px";
+					}
+				};
+			}
+		function openNav() {
+			document.getElementById("slidebar").style.width = "150px";
+		}
+		function closeNav() {
+			document.getElementById("slidebar").style.width = "0";
+		}
+		var mq = window.matchMedia( "(min-width: 1230px)" );
+			$.fn.scrollBottom = function() { 
+				return $(document).height() - this.scrollTop() - this.height(); 
+			};
+			window.onscroll = function() {myFunction()};
+			function myFunction() {
+				if (document.body.scrollTop > 100 && mq.matches && $(window).scrollBottom() > 100) {
+					$(".arrow").fadeIn()
+				} else {
+					$(".arrow").fadeOut()
+				}
+			}
+	</script>
+</html>
